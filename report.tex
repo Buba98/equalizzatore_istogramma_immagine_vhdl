@@ -42,7 +42,7 @@
 \begin{tabular}{l r}
 Matricola: & 916368\\ % Partner names
 Codice Persona: & 10683567\\
-Docente: & Salice Fabio  % Instructor/supervisor
+Docente: & Salice Fabio	 % Instructor/supervisor
 \end{tabular}
 \end{center}
 
@@ -58,14 +58,14 @@ Data un'immagine salvata in memoria viene chiesto al componente di:
 \item Calcolare il nuovo valore dei pixel e salvarli in memoria
 \end{enumerate}
 
-La massima grandezza della matrice dell'immagine e' 128 x 128 come da specifica. Nel caso fosse letto un valore maggiore di righe o colonne questi verranno salvati come 128. I pixel successivi verranno ignorati e, nel caso, verranno sovrascritti per far posto ai pixel equalizzati.\\
-Inoltre, l'implementazione deve essere in grado di gestire un segnale di Reset.Per l'implementazione si è scelto di supporre il Reset asincrono rispetto al segnale di clock. L'implementazione deve essere poi sintetizzata con target a FPGA xc7a200tfbg484-1.
+La massima grandezza della matrice dell'immagine e' 128 x 128 come da specifica. Nel caso fosse letto un valore maggiore di righe o colonne questo verra' salvato come 128. Nel caso di presenza di valori oltre l' indice di righe x colonne, questi verranno, nel caso fossero raggiunti, sovrascritti dai pixel pixel equalizzati.\\
+Inoltre, l'implementazione deve essere in grado di gestire un segnale di Reset. Per l'implementazione si è scelto di supporre il Reset asincrono rispetto al segnale di clock. L'implementazione deve essere poi sintetizzata con target a FPGA xc7a200tfbg484-1.
 
 \newpage
 \noindent
 
 %----------------------------------------------------------------------------------------
-% SECTION 2
+%	SECTION 2
 %----------------------------------------------------------------------------------------
 
 \section{Implementazione}
@@ -115,9 +115,9 @@ Nella figura a seguito è riportato il disegno dell'automa.
 
   \tikzstyle{every state} = [font=\small]
   \node[initial,state] (A)                    {\texttt{RST}};
-  \node[state]         (B) [right of=A]     {\texttt{SV\_CLMN}};
-  \node[state]         (C) [right of=B]     {\texttt{SV\_RW}};
-  \node[state]         (D) [right of=C]     {\texttt{SV\_PXL}};
+  \node[state]         (B) [right of=A] 	  {\texttt{SV\_CLMN}};
+  \node[state]         (C) [right of=B] 	  {\texttt{SV\_RW}};
+  \node[state]         (D) [right of=C] 	  {\texttt{SV\_PXL}};
   \node[state]         (E) [below of=D]       {\texttt{LP\_SV}};
   \node[state]         (F) [below of=E]       {\texttt{CLC\_SHFT}};
   \node[state]         (G) [below of=F]       {\texttt{EQLZ\_PXL}};
@@ -126,21 +126,21 @@ Nella figura a seguito è riportato il disegno dell'automa.
   \node[state]         (J) [left of=I]       {\texttt{DN}};
 
   \path (A) edge              node {} (B)
-      (A) edge  [loop left] node {} (A)
+ 	    (A) edge  [loop left] node {} (A)
         (B) edge              node {} (C)
         (B) edge              node {} (J)
         (C) edge              node {} (D)
         (C) edge              node {} (J)
-        (D) edge  [bend right]      node {} (E)
-        (E) edge        node {} (F)
-        (E) edge  [bend right]      node {} (D)
-        (F) edge        node {} (G)
-        (G) edge        node {} (H)
-        (H) edge        node {} (I)
-        (I) edge        node {} (J)
-        (I) edge  [bend right]      node {} (G)
-        (J) edge        node{} (A)
-        (J) edge  [loop left]     node {} (J);
+        (D) edge 	[bend right]		  node {} (E)
+        (E) edge 			  node {} (F)
+        (E) edge 	[bend right]		  node {} (D)
+        (F) edge 			  node {} (G)
+        (G) edge 			  node {} (H)
+        (H) edge			  node {} (I)
+        (I) edge			  node {} (J)
+        (I) edge	[bend right]		  node {} (G)
+        (J) edge			  node{} (A)
+        (J) edge	[loop left]		  node {} (J);
 \end{tikzpicture}
 \end{center}
 
@@ -177,5 +177,5 @@ Lavorando sul testing si è anche provato a variare il periodo di clock, conferm
 
 \section{Conclusioni}
 
-Avendo passato la totalita' dei test sia scritti manualmente, che generati, che ricevuti attraverso beep o altri canali di comunicazione, posso dire con una certa confidenza che l'implementazione rispetti tutte le specifiche indicate.
+Avendo passato la totalita' dei test sia scritti manualmente, che generati, che ricevuti attraverso beep o altri canali di comunicazione, posso affermare con una certa confidenza che l'implementazione rispetti tutte le specifiche indicate.
 \end{document}
