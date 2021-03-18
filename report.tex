@@ -58,7 +58,7 @@ Data un'immagine salvata in memoria viene chiesto al componente di:
 \item Calcolare il nuovo valore dei pixel e salvarli in memoria
 \end{enumerate}
 
-La massima grandezza della matrice dell'immagine e' 128 x 128 come da specifica. Nel caso fosse letto un valore maggiore di righe o colonne questo verra' salvato come 128. Nel caso di presenza di valori oltre l' indice di righe x colonne, questi verranno, nel caso fossero raggiunti, sovrascritti dai pixel pixel equalizzati.\\
+La massima grandezza della matrice dell'immagine e' 128 x 128 come da specifica. Nel caso fosse letto un valore maggiore di righe o colonne questo verra' salvato come 128. Nel caso di presenza di valori oltre l' indice di righe x colonne, questi verranno, nel caso fossero raggiunti, sovrascritti dai pixel equalizzati.\\
 Inoltre, l'implementazione deve essere in grado di gestire un segnale di Reset. Per l'implementazione si è scelto di supporre il Reset asincrono rispetto al segnale di clock. L'implementazione deve essere poi sintetizzata con target a FPGA xc7a200tfbg484-1.
 
 \newpage
